@@ -1,0 +1,44 @@
+:root{
+    --rojo: #E84D5C;
+    --rojoClaro: rgb(231, 66, 83);
+    --azulSky: #0284c7;
+    --verdeAqcua: #08D4A9;
+    --morado: #283061;
+    --moradoFuerte: #232954;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-rojo{
+    background-color: var(--rojo);
+}
+.bg-rojo:hover{
+    background-color: var(--rojoClaro);
+}
+.bg-linear-rojo{
+    background-image: linear-gradient(to right, var(--rojo), var(--rojoClaro));
+}
+.text-rojo{
+    color: var(--rojo);
+}
+.text-rojo-claro{
+    color: var(--rojoClaro);
+}
+
+
+.bg-morado{
+    background-color: var(--morado);
+}
+.bg-morado:hover{
+    background-color: var(--moradoFuerte);
+}
+.bg-linear-morado{
+    background-image: linear-gradient(to right, var(--morado), var(--moradoFuerte));
+}
+.text-morado{
+    color: var(--morado);
+}
+.text-morado-fuerte{
+    color: var(--moradoFuerte);
+}
