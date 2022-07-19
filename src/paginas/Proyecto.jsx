@@ -36,7 +36,7 @@ const Proyecto = () => {
         })
 
         socket.on('tarea eliminada', tareaEliminada =>{
-            if(tareaEliminada.proyecto === proyecto._id){
+            if(tareaEliminada?.proyecto?._id ? tareaEliminada?.proyecto?._id === proyecto._id : tareaEliminada?.proyecto === proyecto._id){
                 eliminarTareaProyecto(tareaEliminada)
             }
         })

@@ -216,6 +216,7 @@ const ProyectosProvider = ({children}) =>{
             }
             const { data } = await clienteAxios.put(`/tareas/${tarea.id}`, tarea, config)
 
+            setTarea(data)
             setModalFormularioTarea(false)
             mostrarAlerta('Tarea Actualizada', false)
             setCargandoModal(false)
@@ -278,6 +279,7 @@ const ProyectosProvider = ({children}) =>{
             }
             const { data } = await clienteAxios.delete(`/tareas/${tarea._id}`, config)
 
+            console.log('eliminada')
             setModalEliminarTarea(false)
             mostrarAlerta('Tarea Eliminada', false)
             
