@@ -100,7 +100,7 @@ const ProyectosProvider = ({children}) =>{
             // * REDIRECCIONAR A LOS PROYECTOS
             setTimeout(() =>{
                 navigate('/proyectos')
-            }, 1200)
+            }, 100)
         } catch (error) {
             console.log(error)
         }
@@ -127,7 +127,7 @@ const ProyectosProvider = ({children}) =>{
             // * REDIRECCIONAR A LOS PROYECTOS
             setTimeout(() =>{
                 navigate('/proyectos')
-            }, 1200)
+            }, 100)
         } catch (error) {
             console.log(error)
         }
