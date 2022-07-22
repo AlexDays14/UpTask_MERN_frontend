@@ -16,7 +16,7 @@ const Proyecto = () => {
 
     const {id} = useParams();
 
-    const { obtenerProyecto, proyecto, cargando, handleModalTarea, alerta, submitTareasProyecto, eliminarTareaProyecto, editarTareaProyecto, completarTareaProyecto } = useProyectos()
+    const { obtenerProyecto, proyecto, cargandoPantalla, handleModalTarea, alerta, submitTareasProyecto, eliminarTareaProyecto, editarTareaProyecto, completarTareaProyecto } = useProyectos()
     const admin = useAdmin()
 
     /* useEffect(() =>{
@@ -59,7 +59,7 @@ const Proyecto = () => {
     const { msg, error } = alerta;
 
     return (
-        !cargando ? (
+        !cargandoPantalla ? (
             <>
                 <div className="text-gray-500 inline-flex items-center mb-5 gap-1">
                     <Link
@@ -76,7 +76,7 @@ const Proyecto = () => {
                 </div>
                 
                 <div className="flex flex-wrap gap-5 justify-between">
-                    <h1 className="font-black text-4xl">{_id ? nombre : 'No Encontrado'}</h1>
+                    <h1 className="font-black text-4xl">{nombre}</h1>
                     
                     {admin && <div 
                         className="flex flex-1 justify-center md:justify-end items-center transition-all "
@@ -104,14 +104,12 @@ const Proyecto = () => {
                 </button>}
 
                 
-                {_id ? <p className="font-bold text-xl mt-10 mb-5">Tareas del Proyecto</p> : <p className="mt-10 mb-5"></p>}
+                <p className="font-bold text-xl mt-10 mb-5">Tareas del Proyecto</p>
 
                 <div className="w-full md:w-3/4 lg:w-9/12 mx-auto">
                     {msg && error && <Alerta alerta={alerta} />}
                 </div>
 
-                {_id &&
-                <>
                 <div className="bg-white shadow mt-10 rounded-lg">
                     {proyecto?.tareas?.length ? 
                         proyecto?.tareas?.map(tarea => (
@@ -146,7 +144,6 @@ const Proyecto = () => {
                       </p>
                     }
                 </div>}
-                </>}
 
                 <ModalFormularioTarea/>
                 <ModalEliminarTarea/>
@@ -154,20 +151,41 @@ const Proyecto = () => {
             </>
         ) :(
             <>
+                <div className="text-gray-500 inline-flex items-center mb-5 gap-1">
+                    <div
+                        className="bg-sky-700 rounded-md animate-pulse text-sky-700"
+                    >
+                        Proyectos
+                    </div>
+                    <span className="font-bold text-gray-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </span>
+                </div>
+
                 <div className="animate-pulse flex justify-between">
                     <div className="bg-stone-200 text-4xl w-3/4 rounded-md h-10"></div>
+                </div>
 
-                    <div className="flex items-center gap-2 bg-stone-300 text-gray-300 rounded-md h-10">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                        </svg>
+                <p className="font-bold text-xl bg-stone-400 text-stone-400 animate-pulse rounded-md mt-10 mb-5 lg:w-1/6 h-7"></p>
 
-                        <div
-                            className="uppercase font-bold"
-                        >
-                            Editar
-                        </div>
-                    </div>
+                <div className="bg-white shadow mt-10 rounded-lg">
+                    {[1,2,3].length && 
+                        [1,2,3].map((tarea, index) => (
+                            <Tarea key={index} tarea={tarea} />
+                        )) 
+                    }
+                </div>
+                
+                <p className="font-bold text-xl bg-stone-400 text-stone-400 animate-pulse rounded-md mt-10 mb-5 lg:w-1/6 h-7"></p>
+
+                <div className="bg-white shadow mt-10 mb-10 rounded-lg">
+                    {[1,2].length && 
+                        [1,2].map((colaborador, index) => (
+                            <Colaborador key={index} colaborador={colaborador}/>
+                        )) 
+                    }
                 </div>
             </>
         )

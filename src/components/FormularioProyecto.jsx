@@ -22,7 +22,7 @@ const FormularioProyecto = () => {
             setFechaEntrega(proyecto.fechaEntrega?.split('T')[0])
             setCliente(proyecto.cliente)
         }
-    }, [params])
+    }, [])
 
 
     async function handleSubmit(e){

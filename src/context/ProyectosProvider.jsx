@@ -28,6 +28,7 @@ const ProyectosProvider = ({children}) =>{
 
     useEffect(() =>{
         const obtenerProyectos = async () =>{
+            setCargandoPantalla(true)
             try {
                 const token = localStorage.getItem('token')
                 if(!token) return
@@ -42,6 +43,7 @@ const ProyectosProvider = ({children}) =>{
             } catch (error) {
                 console.log(error)
             }
+            setCargandoPantalla(false)
         } 
         obtenerProyectos()
     }, [auth])
@@ -99,7 +101,7 @@ const ProyectosProvider = ({children}) =>{
 
             // * REDIRECCIONAR A LOS PROYECTOS
             setTimeout(() =>{
-                navigate('/proyectos')
+                navigate(`/proyectos/${data._id}`)
             }, 100)
         } catch (error) {
             console.log(error)
@@ -135,7 +137,6 @@ const ProyectosProvider = ({children}) =>{
 
     const obtenerProyecto = async id =>{
         setCargandoPantalla(true)
-        setCargando(true)
         try {
             const token = localStorage.getItem('token')
             if(!token) return
@@ -159,7 +160,6 @@ const ProyectosProvider = ({children}) =>{
                 setAlerta({})
             }, 3000);
         }
-        setCargando(false)
         setCargandoPantalla(false)
     }
 
